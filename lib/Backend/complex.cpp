@@ -4,7 +4,7 @@
 using d_type = Complex::data_type;
 using i_type = Complex::iter_type;
 
-const i_type MAX_ITERS = 256;
+const i_type MAX_ITERS = 255;
 
 
 inline void _mandelbrot (
