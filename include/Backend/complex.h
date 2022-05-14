@@ -3,11 +3,13 @@
 #define COMPLEX
 #endif
 
+#include <OpenGL/gl.h>
+
 
 namespace complex {
 
 using data_type = double;
-using iter_type = unsigned char;
+using iter_type = GLubyte;
 
 
 data_type sq_abs(
