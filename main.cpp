@@ -3,8 +3,8 @@
 
 #include "Backend/complex.h"
 
-using d_type = Complex::data_type;
-using i_type = Complex::iter_type;
+using d_type = complex::data_type;
+using i_type = complex::iter_type;
 
 int main(int argc, char** argv) {
 
@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
 
     std::cin >> re >> im;
 
-    std::cout << (int)belonging_rate(re, im) << std::endl;
+    std::cout << (int)complex::belonging_rate(re, im) << std::endl;
 
     return EXIT_SUCCESS;
 }
