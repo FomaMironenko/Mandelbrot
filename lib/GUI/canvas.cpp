@@ -55,4 +55,5 @@ void key_pressed(unsigned char key, int x, int y) {
 
 void reshape(GLsizei width, GLsizei height) {
     // disable reshaping
+    glutReshapeWindow(size_x, size_y);
 }
