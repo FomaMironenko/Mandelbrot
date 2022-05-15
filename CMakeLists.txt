@@ -4,6 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES
     lib/Backend/complex.cpp
+    lib/Backend/image-processing.cpp
     lib/GUI/canvas.cpp
     main.cpp
 )

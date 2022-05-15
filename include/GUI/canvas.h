@@ -18,8 +18,8 @@ const unsigned char MY_KEY_RIGHT = 100;
 const unsigned char MY_KEY_DOWN = 115;
 const unsigned char MY_KEY_LEFT = 97;
 
-constexpr int size_x = 720;
-constexpr int size_y = 480;
+constexpr size_t size_x = 720;
+constexpr size_t size_y = 480;
 
 
 void display(int d_x = 0, int d_y = 0);
