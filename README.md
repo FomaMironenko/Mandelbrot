@@ -15,8 +15,9 @@ This is a GUI project for Mandelbrot set investigation and visualization.
 - <span style="color:green">Add basic Mandelbrot set logic</span>
 - Add interactions
     - <span style="color:green">Add shifts</span>
-    - Add fast shifts
-    - Add Scaling
+    - <span style="color:green">Add fast shifts</span>
+    - <span style="color:green">Add Scaling</span>
+    - Add fast scaling
 - Add window resize
 - Parallelize calculations
 - Add screenshots capturing
@@ -24,6 +25,8 @@ This is a GUI project for Mandelbrot set investigation and visualization.
 ### GUI
 - <span style="color:green">Throw **OpenGL** in</span>
 - Add colormaps
-- Add *scale* and *current position* values
+- Visualize *scale* and *current position* values
+- Add a dot in the center of the picture
+- Enable / Disable dot
 - Add differen keyboard layouts handling
 - Fix issue with different window sizes for high resolution screens

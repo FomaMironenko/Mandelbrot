@@ -3,21 +3,33 @@
 
 #include "Backend/image-processing.h"
 
-void shift_matrix(
+
+void resolve_queries(
+    pixel_type * data,
+    int size_x, int size_y,
+    const Grid & grid,
+    int query_rngx[2], int query_rngy[2]
+) {
+    int mid_x = size_x / 2;
+    int mid_y = size_y / 2;
+    for (int row = query_rngy[0]; row < query_rngy[1]; row++) {
+        for (int col = query_rngx[0]; col < query_rngx[1]; col++) {
+            data[row*size_x + col] = 
+            complex::belonging_rate(
+                (col - mid_x) * grid.spacing + grid.x_offset,
+                (row - mid_y) * grid.spacing + grid.y_offset
+            );
+        }
+    }
+}
+
+
+void vertical_shift(
     pixel_type * data,
     int size_x, int size_y,
     Grid & grid,
-    int d_x, int d_y
+    int d_y
 ) {
-    if (d_x != 0 && d_y != 0) {
-        shift_matrix(data, size_x, size_y, grid, 0, d_y);
-        shift_matrix(data, size_x, size_y, grid, d_x, 0);
-        return;
-    }
-    if (d_x == 0 && d_y == 0) return;
-
-    // update grid structure
-    grid.x_offset += d_x * grid.spacing;
     grid.y_offset += d_y * grid.spacing;
     // range to be queried to mandelbrot
     int query_rngx[2] = {0, size_x};
@@ -44,8 +56,24 @@ void shift_matrix(
         }
         query_rngy[0] = size_y - d_y;
     }
+    // time expensive mandelbrot queries
+    resolve_queries(
+        data, size_x, size_y, 
+        grid, query_rngx, query_rngy
+    );
+}
 
-    // horizontal shift
+void horizontal_shift(
+    pixel_type * data,
+    int size_x, int size_y,
+    Grid & grid,
+    int d_x
+) {
+    grid.x_offset += d_x * grid.spacing;
+    // range to be queried to mandelbrot
+    int query_rngx[2] = {0, size_x};
+    int query_rngy[2] = {0, size_y};
+
     int keep_size = size_x - std::abs(d_x);
     if (d_x < 0 && keep_size > 0) {
         for (int row = 0; row < size_y; row++) {
@@ -67,17 +95,44 @@ void shift_matrix(
         }
         query_rngx[0] = size_x - d_x;
     }
+    // time expensive mandelbrot queries
+    resolve_queries(
+        data, size_x, size_y, 
+        grid, query_rngx, query_rngy
+    );
+}
+
+
+void shift_matrix(
+    pixel_type * data,
+    int size_x, int size_y,
+    Grid & grid,
+    int d_x, int d_y
+) {
+    if (d_x != 0) {
+        horizontal_shift( data, size_x, size_y, grid, d_x );
+    }
+    if (d_y != 0) {
+        vertical_shift( data, size_x, size_y, grid, d_y );
+    }
+}
+
+
+void scale_matrix(
+    pixel_type * data,
+    int size_x, int size_y,
+    Grid & grid,
+    unsigned nom, unsigned denom
+) {
+    grid.spacing *= (d_type)denom;
+    grid.spacing /= (d_type)nom;
+
+    int query_rngx[2] = {0, size_x};
+    int query_rngy[2] = {0, size_y};
 
     // time expensive mandelbrot queries
-    int mid_x = size_x / 2;
-    int mid_y = size_y / 2;
-    for (int row = query_rngy[0]; row < query_rngy[1]; row++) {
-        for (int col = query_rngx[0]; col < query_rngx[1]; col++) {
-            data[row*size_x + col] = 
-            complex::belonging_rate(
-                (col - mid_x) * grid.spacing + grid.x_offset,
-                (row - mid_y) * grid.spacing + grid.y_offset
-            );
-        }
-    }
+    resolve_queries(
+        data, size_x, size_y, 
+        grid, query_rngx, query_rngy
+    );
 }

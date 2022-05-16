@@ -31,6 +31,10 @@ const unsigned char EN_KEY_LEFT_UPPCASE = 65;
 const unsigned char RU_KEY_LEFT_LOWCASE = 97;
 const unsigned char RU_KEY_LEFT_UPPCASE = 65;
 
+const unsigned char EN_KEY_PLUS = 43;
+
+const unsigned char EN_KEY_MINUS = 95;
+
 
 constexpr int size_x = 720;
 constexpr int size_y = 480;
@@ -40,9 +44,7 @@ std::pair<int, int> getWindowSize();
 
 void initCanvas();
 
-void display(int d_x = 0, int d_y = 0);
-
-void basic();
+void display();
 
 void key_pressed(unsigned char key, int x, int y);
 

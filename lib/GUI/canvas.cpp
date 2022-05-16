@@ -30,36 +30,49 @@ void initCanvas() {
     }
 }
 
-void display(int d_x, int d_y) {
-    shift_matrix(data, size_x, size_y, grid, d_x, d_y);
+void display() {
     glDrawPixels(size_x, size_y, GL_BLUE, GL_UNSIGNED_BYTE, data);
     glFlush();
 }
 
-void basic() {
-    display();
+
+void do_shift(int d_x, int d_y) {
+    shift_matrix(data, size_x, size_y, grid, d_x, d_y);
+}
+
+void do_scale(unsigned nom, unsigned denom) {
+    scale_matrix(data, size_x, size_y, grid, nom, denom);
 }
 
 void key_pressed(unsigned char key, int x, int y) {
     int step = 20;
+    unsigned nom = 3;
+    unsigned den = 2;
+    
     switch (key) {
         case EN_KEY_UP_LOWCASE:
         case EN_KEY_UP_UPPCASE:
-            display(0, step);
+            do_shift(0, step);
             break;
         case EN_KEY_DOWN_LOWCASE:
         case EN_KEY_DOWN_UPPCASE:
-            display(0, -step);
+            do_shift(0, -step);
             break;
         case EN_KEY_LEFT_LOWCASE:
         case EN_KEY_LEFT_UPPCASE:
-            display(-step, 0);
+            do_shift(-step, 0);
             break;
         case EN_KEY_RIGHT_LOWCASE:
         case EN_KEY_RIGHT_UPPCASE:
-            display(step, 0);
+            do_shift(step, 0);
             break;
+        case EN_KEY_PLUS:
+            do_scale(nom, den);
+            break;
+        case EN_KEY_MINUS:
+            do_scale(den, nom);
     }
+    display();
 }
 
 std::pair<int, int> getWindowSize() {

@@ -28,6 +28,6 @@ void shift_matrix(
 void scale_matrix(
     pixel_type * data,
     int size_x, int size_y,
-    const Grid & grid,
+    Grid & grid,
     unsigned nom, unsigned denom
 );

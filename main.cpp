@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize(size_xy.first, size_xy.second);
     glutCreateWindow("Hello!");
 
-    glutDisplayFunc(basic);
+    glutDisplayFunc(display);
     glutKeyboardFunc(key_pressed);
     glutReshapeFunc(reshape);
 
