@@ -33,7 +33,7 @@ i_type complex::belonging_rate(
         sq_re = cur_re * cur_re;
         sq_im = cur_im * cur_im;
         if (sq_re + sq_im > 4) break;
-        cur_im = cur_re * cur_im + ini_im;
+        cur_im = 2 * cur_re * cur_im + ini_im;
         cur_re = sq_re  - sq_im  + ini_re;
     }
     return i;
