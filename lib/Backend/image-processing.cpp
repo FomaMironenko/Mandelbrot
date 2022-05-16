@@ -24,24 +24,24 @@ void shift_matrix(
 
     // vertical shift
     if (d_y < 0) {
-        for (int dst_row = 0; dst_row < size_y + d_y; dst_row++) {
+        for (int dst_row = size_y - 1; dst_row >= -d_y; dst_row--) {
             std::memcpy(
                 data + dst_row * size_x,        // destination
-                data + (dst_row - d_y) * size_x,// source
+                data + (dst_row + d_y) * size_x,// source
                 size_x * sizeof(pixel_type)
             );
         }
-        query_rngy[0] = size_y + d_y;
+        query_rngy[1] = -d_y;
     }
     if (d_y > 0) {
-        for (int dst_row = size_y - 1; dst_row >= d_y; dst_row--) {
+        for (int dst_row = 0; dst_row < size_y - d_y; dst_row++) {
             std::memcpy(
                 data + dst_row * size_x,        // destination
-                data + (dst_row - d_y) * size_x,// source
+                data + (dst_row + d_y) * size_x,// source
                 size_x * sizeof(pixel_type)
             );
         }
-        query_rngy[1] = d_y;
+        query_rngy[0] = size_y - d_y;
     }
 
     // horizontal shift
