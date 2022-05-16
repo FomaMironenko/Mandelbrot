@@ -43,16 +43,20 @@ void basic() {
 void key_pressed(unsigned char key, int x, int y) {
     int step = 80;
     switch (key) {
-        case MY_KEY_UP:
+        case EN_KEY_UP_LOWCASE:
+        case EN_KEY_UP_UPPCASE:
             display(0, step);
             break;
-        case MY_KEY_DOWN:
+        case EN_KEY_DOWN_LOWCASE:
+        case EN_KEY_DOWN_UPPCASE:
             display(0, -step);
             break;
-        case MY_KEY_LEFT:
+        case EN_KEY_LEFT_LOWCASE:
+        case EN_KEY_LEFT_UPPCASE:
             display(-step, 0);
             break;
-        case MY_KEY_RIGHT:
+        case EN_KEY_RIGHT_LOWCASE:
+        case EN_KEY_RIGHT_UPPCASE:
             display(step, 0);
             break;
     }

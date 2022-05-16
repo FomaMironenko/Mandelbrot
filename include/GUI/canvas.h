@@ -12,14 +12,26 @@
 
 
 using pixel_type = complex::iter_type;
+const unsigned char EN_KEY_UP_LOWCASE = 119;
+const unsigned char EN_KEY_UP_UPPCASE = 87;
+const unsigned char RU_KEY_UP_LOWCASE = 119;
+const unsigned char RU_KEY_UP_UPPCASE = 87;
 
-const unsigned char MY_KEY_UP = 119;
-const unsigned char MY_KEY_RIGHT = 100;
-const unsigned char MY_KEY_DOWN = 115;
-const unsigned char MY_KEY_LEFT = 97;
+const unsigned char EN_KEY_RIGHT_LOWCASE = 100;
+const unsigned char EN_KEY_RIGHT_UPPCASE = 68;
+const unsigned char RU_KEY_RIGHT_LOWCASE = 100;
+const unsigned char RU_KEY_RIGHT_UPPCASE = 68;
 
-constexpr size_t size_x = 720;
-constexpr size_t size_y = 480;
+const unsigned char EN_KEY_DOWN_LOWCASE = 115;
+const unsigned char EN_KEY_DOWN_UPPCASE = 83;
+const unsigned char RU_KEY_DOWN_LOWCASE = 115;
+const unsigned char RU_KEY_DOWN_UPPCASE = 83;
+
+const unsigned char EN_KEY_LEFT_LOWCASE = 97;
+const unsigned char EN_KEY_LEFT_UPPCASE = 65;
+const unsigned char RU_KEY_LEFT_LOWCASE = 97;
+const unsigned char RU_KEY_LEFT_UPPCASE = 65;
+
 
 
 std::pair<int, int> getWindowSize();
