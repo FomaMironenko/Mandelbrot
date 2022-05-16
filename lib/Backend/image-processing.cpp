@@ -5,7 +5,7 @@
 
 void shift_matrix(
     pixel_type * data,
-    size_t size_x, size_t size_y,
+    int size_x, int size_y,
     Grid & grid,
     int d_x, int d_y
 ) {
@@ -14,10 +14,11 @@ void shift_matrix(
         shift_matrix(data, size_x, size_y, grid, d_x, 0);
         return;
     }
+    if (d_x == 0 && d_y == 0) return;
 
     // update grid structure
-    grid.x_offset += d_x * grid.scale;
-    grid.y_offset += d_y * grid.scale;
+    grid.x_offset += d_x * grid.spacing;
+    grid.y_offset += d_y * grid.spacing;
     // range to be queried to mandelbrot
     int query_rngx[2] = {0, size_x};
     int query_rngy[2] = {0, size_y};
@@ -68,14 +69,14 @@ void shift_matrix(
     }
 
     // time expensive mandelbrot queries
-    size_t mid_x = size_x / 2;
-    size_t mid_y = size_y / 2;
+    int mid_x = size_x / 2;
+    int mid_y = size_y / 2;
     for (int row = query_rngy[0]; row < query_rngy[1]; row++) {
-        for (int col = query_rngy[0]; col < query_rngx[1]; col++) {
+        for (int col = query_rngx[0]; col < query_rngx[1]; col++) {
             data[row*size_x + col] = 
             complex::belonging_rate(
-                (col - mid_x) * grid.scale + grid.x_offset,
-                (row - mid_y) * grid.scale + grid.y_offset
+                (col - mid_x) * grid.spacing + grid.x_offset,
+                (row - mid_y) * grid.spacing + grid.y_offset
             );
         }
     }

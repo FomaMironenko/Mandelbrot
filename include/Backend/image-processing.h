@@ -20,14 +20,14 @@ struct Grid {
 
 void shift_matrix(
     pixel_type * data,
-    size_t size_x, size_t size_y,
+    int size_x, int size_y,
     Grid & grid,
     int d_x, int d_y
 );
 
 void scale_matrix(
     pixel_type * data,
-    size_t size_x, size_t size_y,
+    int size_x, int size_y,
     const Grid & grid,
     unsigned nom, unsigned denom
 );

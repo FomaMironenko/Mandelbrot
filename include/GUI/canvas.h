@@ -11,7 +11,6 @@
 #include "Backend/complex.h"
 
 
-using pixel_type = complex::iter_type;
 const unsigned char EN_KEY_UP_LOWCASE = 119;
 const unsigned char EN_KEY_UP_UPPCASE = 87;
 const unsigned char RU_KEY_UP_LOWCASE = 119;
@@ -32,6 +31,9 @@ const unsigned char EN_KEY_LEFT_UPPCASE = 65;
 const unsigned char RU_KEY_LEFT_LOWCASE = 97;
 const unsigned char RU_KEY_LEFT_UPPCASE = 65;
 
+
+constexpr int size_x = 720;
+constexpr int size_y = 480;
 
 
 std::pair<int, int> getWindowSize();
