@@ -53,7 +53,12 @@ void key_pressed(unsigned char key, int x, int y) {
     }
 }
 
-void reshape(GLsizei width, GLsizei height) {
+std::pair<int, int> getWindowSize() {
+    return {size_x, size_y};
+}
+
+void reshape(int width, int height) {
     // disable reshaping
-    glutReshapeWindow(size_x, size_y);
+    auto size_xy = getWindowSize();
+    glutReshapeWindow(size_xy.first, size_xy.second);
 }

@@ -22,10 +22,13 @@ constexpr size_t size_x = 720;
 constexpr size_t size_y = 480;
 
 
+std::pair<int, int> getWindowSize();
+
+
 void display(int d_x = 0, int d_y = 0);
 
 void basic();
 
 void key_pressed(unsigned char key, int x, int y);
 
-void reshape(GLsizei width, GLsizei height);
+void reshape(int width, int height);
