@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
     auto size_xy = getWindowSize();
     glutInitWindowSize(size_xy.first, size_xy.second);
-    glutCreateWindow("Hello!");
+    glutCreateWindow("Hello, fractal world!");
 
     glutDisplayFunc(display);
     glutKeyboardFunc(key_pressed);
