@@ -24,6 +24,7 @@ constexpr size_t size_y = 480;
 
 std::pair<int, int> getWindowSize();
 
+void initCanvas();
 
 void display(int d_x = 0, int d_y = 0);
 

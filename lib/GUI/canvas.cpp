@@ -3,30 +3,35 @@
 #include <GLUT/glut.h>
 
 #include "Backend/complex.h"
+#include "Backend/image-processing.h"
 #include "GUI/canvas.h"
 
 
-using d_type = complex::data_type;
+pixel_type data[size_x * size_y];
+Grid grid;
+
+
+void initCanvas() {
+    grid.spacing = 4.0 / size_x;
+    grid.x_offset = 0;
+    grid.y_offset = 0;
+
+    int mid_x = size_x / 2;
+    int mid_y = size_y / 2;
+
+    for (int row = 0; row < size_y; row++) {
+        for (int col = 0; col < size_x; col++) {
+            data[row*size_x + col] = 
+            complex::belonging_rate(
+                (col - mid_x) * grid.spacing + grid.x_offset,
+                (row - mid_y) * grid.spacing + grid.y_offset
+            );
+        }
+    }
+}
 
 void display(int d_x, int d_y) {
-    static int offset_x = 0;
-    static int offset_y = 0;
-    offset_x += d_x;
-    offset_y += d_y;
-
-    pixel_type data[size_x * size_y];
-    int cln = 0, row = 0;
-    d_type mid_x = size_x / 2.0, mid_y = size_y / 2.0;
-    d_type x = 0, y = 0;
-    for (int i = 0; i < size_x * size_y; i++) {
-        cln = i % size_x;
-        row = i / size_x;
-        x = 2 * ((d_type)cln - mid_x) / size_x + 
-            (d_type)offset_x / size_x;
-        y = 2 * ((d_type)row - mid_y) / size_y +
-            (d_type)offset_y / size_y;
-        data[i] = complex::belonging_rate(x, y);
-    }
+    shift_matrix(data, size_x, size_y, grid, d_x, d_y);
     glDrawPixels(size_x, size_y, GL_BLUE, GL_UNSIGNED_BYTE, data);
     glFlush();
 }

@@ -20,6 +20,7 @@ int main(int argc, char** argv) {
     glutKeyboardFunc(key_pressed);
     glutReshapeFunc(reshape);
 
+    initCanvas();
     glutMainLoop();
 
     return EXIT_SUCCESS;

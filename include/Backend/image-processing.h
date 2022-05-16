@@ -13,7 +13,7 @@ using d_type = complex::data_type;
 
 
 struct Grid {
-    d_type scale;
+    d_type spacing;
     d_type x_offset;
     d_type y_offset;
 };
