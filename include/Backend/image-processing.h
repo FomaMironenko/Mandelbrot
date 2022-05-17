@@ -18,6 +18,13 @@ struct Grid {
     d_type y_offset;
 };
 
+void resolve_queries(
+    pixel_type * data,
+    int size_x, int size_y,
+    const Grid & grid,
+    int query_rngx[2], int query_rngy[2]
+);
+
 void shift_matrix(
     pixel_type * data,
     int size_x, int size_y,

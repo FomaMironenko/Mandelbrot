@@ -16,18 +16,12 @@ void initCanvas() {
     grid.x_offset = 0;
     grid.y_offset = 0;
 
-    int mid_x = size_x / 2;
-    int mid_y = size_y / 2;
-
-    for (int row = 0; row < size_y; row++) {
-        for (int col = 0; col < size_x; col++) {
-            data[row*size_x + col] = 
-            complex::belonging_rate(
-                (col - mid_x) * grid.spacing + grid.x_offset,
-                (row - mid_y) * grid.spacing + grid.y_offset
-            );
-        }
-    }
+    int query_rngx[2] = {0, size_x};
+    int query_rngy[2] = {2, size_y};
+    resolve_queries(
+        data, size_x, size_y,
+        grid, query_rngx, query_rngy
+    );
 }
 
 void display() {
