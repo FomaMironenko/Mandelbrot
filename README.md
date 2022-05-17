@@ -15,13 +15,13 @@ This is a GUI project for Mandelbrot set investigation and visualization.
 
 ### Backend
 - :white_check_mark: <span style="color:green">Add basic Mandelbrot set logic</span>
-- :black_square_button: Add interactions
+- :white_check_mark: Add interactions
     - :white_check_mark: <span style="color:green">Add shifts</span>
     - :white_check_mark: <span style="color:green">Add fast shifts</span>
     - :white_check_mark: <span style="color:green">Add Scaling</span>
-    - :black_square_button: Add fast scaling
+    - :x: Add fast scaling
 - :black_square_button: Add window resize
-- :black_square_button: Parallelize calculations
+- :white_check_mark: Parallelize calculations
 - :black_square_button: Add screenshots capturing
 
 ### GUI
