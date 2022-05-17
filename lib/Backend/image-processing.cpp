@@ -1,8 +1,36 @@
 #include <iostream>
 #include <algorithm>
+#include <thread>
 
 #include "Backend/image-processing.h"
 
+
+constexpr unsigned nThreads = 8;
+std::thread threads[nThreads];
+
+void work(
+    pixel_type * data,
+    int size_x, int size_y,
+    const Grid & grid,
+    int query_rngx[2], int query_rngy[2],
+    unsigned nThreads, unsigned curThread
+) {
+    int mid_x = size_x / 2;
+    int mid_y = size_y / 2;
+    int small_size_x = query_rngx[1] - query_rngx[0];
+    int small_size_y = query_rngy[1] - query_rngy[0];
+    int total_queries = small_size_x * small_size_y;
+    int row = 0, col = 0;
+    for (int i = curThread; i < total_queries; i += nThreads) {
+        row = i / small_size_x + query_rngy[0];
+        col = i % small_size_x + query_rngx[0];
+        data[row*size_x + col] = 
+        complex::belonging_rate(
+            (col - mid_x) * grid.spacing + grid.x_offset,
+            (row - mid_y) * grid.spacing + grid.y_offset
+        );
+    }
+}
 
 void resolve_queries(
     pixel_type * data,
@@ -10,16 +38,14 @@ void resolve_queries(
     const Grid & grid,
     int query_rngx[2], int query_rngy[2]
 ) {
-    int mid_x = size_x / 2;
-    int mid_y = size_y / 2;
-    for (int row = query_rngy[0]; row < query_rngy[1]; row++) {
-        for (int col = query_rngx[0]; col < query_rngx[1]; col++) {
-            data[row*size_x + col] = 
-            complex::belonging_rate(
-                (col - mid_x) * grid.spacing + grid.x_offset,
-                (row - mid_y) * grid.spacing + grid.y_offset
-            );
-        }
+    for (unsigned i = 0; i < nThreads; i++) {
+        threads[i] = std::thread(work, 
+            data, size_x, size_y, grid,
+            query_rngx, query_rngy, nThreads, i
+        );
+    }
+    for (unsigned i = 0; i < nThreads; i++) {
+        threads[i].join();
     }
 }
 
