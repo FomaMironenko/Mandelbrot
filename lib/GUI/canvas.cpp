@@ -39,9 +39,9 @@ void do_scale(unsigned nom, unsigned denom) {
 }
 
 void key_pressed(unsigned char key, int x, int y) {
-    int step = 20;
-    unsigned nom = 3;
-    unsigned den = 2;
+    int step = 30;
+    unsigned nom = 5;
+    unsigned den = 4;
     
     switch (key) {
         case EN_KEY_UP_LOWCASE:
