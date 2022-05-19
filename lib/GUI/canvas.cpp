@@ -4,8 +4,12 @@
 
 #include "Backend/complex.h"
 #include "Backend/image-processing.h"
+
+#include "GUI/shapes.h"
 #include "GUI/canvas.h"
 
+
+bool DO_DRAW_TARGET = false;
 
 pixel_type data[size_x * size_y];
 Grid grid;
@@ -26,6 +30,7 @@ void initCanvas() {
 
 void display() {
     glDrawPixels(size_x, size_y, GL_BLUE, GL_UNSIGNED_BYTE, data);
+    if (DO_DRAW_TARGET) glDrawCircle({.0, .0}, {.15, .15}, {1.0, 1.0, 1.0, .1});
     glFlush();
 }
 
@@ -65,6 +70,10 @@ void key_pressed(unsigned char key, int x, int y) {
             break;
         case EN_KEY_MINUS:
             do_scale(den, nom);
+            break;
+        case EN_KEY_SPACE:
+            DO_DRAW_TARGET = !DO_DRAW_TARGET;
+            break;
     }
     display();
 }

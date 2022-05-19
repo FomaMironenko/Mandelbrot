@@ -32,8 +32,9 @@ const unsigned char RU_KEY_LEFT_LOWCASE = 97;
 const unsigned char RU_KEY_LEFT_UPPCASE = 65;
 
 const unsigned char EN_KEY_PLUS = 43;
-
 const unsigned char EN_KEY_MINUS = 95;
+
+const unsigned char EN_KEY_SPACE = 32;
 
 
 constexpr int size_x = 720;
