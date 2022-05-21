@@ -7,6 +7,7 @@ set(SOURCE_FILES
     lib/Backend/image-processing.cpp
     lib/GUI/canvas.cpp
     lib/GUI/shapes.cpp
+    lib/GUI/colormap.cpp
     main.cpp
 )
 

@@ -36,6 +36,9 @@ const unsigned char EN_KEY_MINUS = 95;
 
 const unsigned char EN_KEY_SPACE = 32;
 
+const unsigned char EN_KEY_COLORMAP_UPPCASE = 67;
+const unsigned char EN_KEY_COLORMAP_LOWCASE = 99;
+
 
 constexpr int size_x = 720;
 constexpr int size_y = 480;
