@@ -3,22 +3,34 @@
 #include <functional>
 
 
-void ColorMap1 ( RGB_SRC_ARGS ) {
+void ColorMap0 ( RGB_SRC_ARGS ) {
     R = src;
     G = src;
-    B = 255;
+    B = src;
+}
+
+void ColorMap1 ( RGB_SRC_ARGS ) {
+    complex::iter_type rMod = src % 100;
+    R = (rMod <= 50) ? rMod :
+        100 - rMod;
+    R *= 4;
+    G = 0;
+    complex::iter_type bMod = src % 128;
+    B = (bMod <= 64) ? bMod :
+        128 - bMod;
+    B *= 2;
 }
 
 void ColorMap2 ( RGB_SRC_ARGS ) {
     R = R = (src <= 50) ? 0 : 
-        (src <= 100) ? 2*(src - 50) :
-        (src <= 150) ? 2*(150 - src) :
+        (src <= 100) ? 3*(src - 50) :
+        (src <= 150) ? 3*(150 - src) :
         0;
     G = 0;
     B = (src <= 100) ? 0 : 
-        (src <= 150) ? 2*(src - 100) :
-        (src <= 200) ? 2*(200 - src) :
-        0;;
+        (src <= 150) ? 4*(src - 100) :
+        (src <= 200) ? 4*(200 - src) :
+        0;
 }
 
 void ColorMap3 ( RGB_SRC_ARGS ) {
@@ -47,21 +59,25 @@ void ColorMap4 ( RGB_SRC_ARGS ) {
         (src - 220) * 10 );
 }
 
+
 unsigned COLORMAP_TYPE = 0;
 
 
 void fill( RGB_SRC_ARGS ) {
     switch (COLORMAP_TYPE) {
         case 0:
-            ColorMap1(R, G, B, src);
+            ColorMap0(R, G, B, src);
             break;
         case 1:
-            ColorMap2(R, G, B, src);
+            ColorMap1(R, G, B, src);
             break;
         case 2:
-            ColorMap3(R, G, B, src);
+            ColorMap2(R, G, B, src);
             break;
         case 3:
+            ColorMap3(R, G, B, src);
+            break;
+        case 4:
             ColorMap4(R, G, B, src);
             break;
     }
