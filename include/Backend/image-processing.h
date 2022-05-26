@@ -8,14 +8,10 @@
 #include "Backend/complex.h"
 
 
-using pixel_type = complex::iter_type;
-using d_type = complex::data_type;
-
-
 struct Grid {
-    d_type spacing;
-    d_type x_offset;
-    d_type y_offset;
+    coord_type spacing;
+    coord_type x_offset;
+    coord_type y_offset;
 };
 
 void resolve_queries(

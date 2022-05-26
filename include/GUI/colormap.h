@@ -7,14 +7,16 @@
 #include "Backend/complex.h"
 
 
-#define RGB_SRC_ARGS complex::iter_type & R, complex::iter_type & G, complex::iter_type & B, complex::iter_type src
+#define RGB_SRC_ARGS pixel_type & R, pixel_type & G, pixel_type & B, pixel_type src
 
 using f_type = void (*)(RGB_SRC_ARGS);
 
 
+
+
 void apply_colormap(
-    complex::iter_type * result,
-    const complex::iter_type * source,
+    pixel_type * result,
+    const pixel_type * source,
     int size_x, int size_y
 );
 
@@ -37,6 +39,8 @@ struct ColorMap {
 };
 
 
+
+
 extern unsigned CURR_COLORMAP;
 
 /* An easy-maintainable list of all colormaps.
@@ -55,12 +59,12 @@ constexpr ColorMap colormaps[] = {
 
     ColorMap("Magic Contrast",
     [](RGB_SRC_ARGS) {
-        complex::iter_type rMod = src % 100;
+        pixel_type rMod = src % 100;
         R = (rMod <= 50) ? rMod :
             100 - rMod;
         R *= 4;
         G = 0;
-        complex::iter_type bMod = src % 128;
+        pixel_type bMod = src % 128;
         B = (bMod <= 64) ? bMod :
             128 - bMod;
         B *= 2;

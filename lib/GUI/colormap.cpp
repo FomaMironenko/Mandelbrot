@@ -7,8 +7,8 @@
 unsigned CURR_COLORMAP = 0;
 
 void apply_colormap(
-    complex::iter_type * result,
-    const complex::iter_type * source,
+    pixel_type * result,
+    const pixel_type * source,
     int size_x, int size_y
 ) {
     auto cmap = colormaps[CURR_COLORMAP].cmap;
