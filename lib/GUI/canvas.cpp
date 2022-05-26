@@ -79,7 +79,7 @@ void key_pressed(unsigned char key, int x, int y) {
             break;
         case EN_KEY_COLORMAP_UPPCASE:
         case EN_KEY_COLORMAP_LOWCASE:
-            COLORMAP_TYPE = (COLORMAP_TYPE + 1) % N_COLORMAPS;
+            CURR_COLORMAP = (CURR_COLORMAP + 1) % numel(colormaps);
             break;
     }
     display();
