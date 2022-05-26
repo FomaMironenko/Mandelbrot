@@ -25,7 +25,7 @@ void work(
         row = i / small_size_x + query_rngy[0];
         col = i % small_size_x + query_rngx[0];
         data[row*size_x + col] = 
-        complex::belonging_rate(
+        belonging_rate(
             (col - mid_x) * grid.spacing + grid.x_offset,
             (row - mid_y) * grid.spacing + grid.y_offset
         );
@@ -150,8 +150,8 @@ void scale_matrix(
     Grid & grid,
     unsigned nom, unsigned denom
 ) {
-    grid.spacing *= (d_type)denom;
-    grid.spacing /= (d_type)nom;
+    grid.spacing *= (pixel_type)denom;
+    grid.spacing /= (pixel_type)nom;
 
     int query_rngx[2] = {0, size_x};
     int query_rngy[2] = {0, size_y};

@@ -8,7 +8,8 @@ This is a GUI project for Mandelbrot set investigation and visualization.
 ***d*** - :arrow_right: moving right<br/>
 ***a*** - :arrow_left: moving left<br/>
 ***+*** - zoom in<br/>
-***-*** - zoom out
+***-*** - zoom out<br/>
+***space*** - enable/disable target circle
 
 
 ## Todo list for Mandelbrot visualization
@@ -23,12 +24,13 @@ This is a GUI project for Mandelbrot set investigation and visualization.
 - :black_square_button: Add window resize
 - :white_check_mark: Parallelize calculations
 - :black_square_button: Add screenshots capturing
+- :maintain OS other than MAC OS
 
 ### GUI
 - :white_check_mark: <span style="color:green">Throw **OpenGL** in</span>
-- :black_square_button: Add colormaps
+- :white_check_mark: Add colormaps
 - :black_square_button: Visualize *scale* and *current position* values
-- :black_square_button: Add a dot in the center of the picture
-- :black_square_button: Enable / Disable dot
+- :white_check_mark: Add a dot in the center of the picture
+- :white_check_mark: Enable / Disable dot
 - :white_check_mark: Add differen keyboard layouts handling
 - :black_square_button: Fix issue with different window sizes for high resolution screens

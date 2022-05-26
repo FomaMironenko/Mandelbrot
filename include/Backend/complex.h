@@ -6,26 +6,22 @@
 #include <OpenGL/gl.h>
 
 
-namespace complex {
-
-using data_type = double;
-using iter_type = GLubyte;
+using coord_type = double;
+using pixel_type = GLubyte;
 
 
-data_type sq_abs(
-    data_type re, data_type im
+coord_type sq_abs(
+    coord_type re, coord_type im
 ) noexcept;
 
 
 inline void mandelbrot (
-    data_type &res_re, data_type &res_im,
-    data_type prv_re,  data_type prv_im,
-    data_type ini_re,  data_type ini_im
+    coord_type &res_re, coord_type &res_im,
+    coord_type prv_re,  coord_type prv_im,
+    coord_type ini_re,  coord_type ini_im
 ) noexcept;
 
 
-iter_type belonging_rate(
-    data_type ini_re, data_type ini_im
+pixel_type belonging_rate(
+    coord_type ini_re, coord_type ini_im
 ) noexcept;
-
-}
