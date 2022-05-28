@@ -1,7 +1,6 @@
 // COMPLEX -- all complex logic implementation
 #ifndef COMPLEX
 #define COMPLEX
-#endif
 
 #include <OpenGL/gl.h>
 
@@ -25,3 +24,5 @@ inline void mandelbrot (
 pixel_type belonging_rate(
     coord_type ini_re, coord_type ini_im
 ) noexcept;
+
+#endif

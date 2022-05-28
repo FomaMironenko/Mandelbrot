@@ -1,6 +1,5 @@
 #ifndef CANVAS
 #define CANVAS
-#endif
 
 #include <iostream>
 #include <memory>
@@ -53,3 +52,5 @@ void display();
 void key_pressed(unsigned char key, int x, int y);
 
 void reshape(int width, int height);
+
+#endif

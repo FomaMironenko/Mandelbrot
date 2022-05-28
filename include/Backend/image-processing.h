@@ -1,6 +1,5 @@
 #ifndef IMAGE_PROCESSING
 #define IMAGE_PROCESSING
-#endif
 
 
 #include <iostream>
@@ -34,3 +33,5 @@ void scale_matrix(
     Grid & grid,
     unsigned nom, unsigned denom
 );
+
+#endif

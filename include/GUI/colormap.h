@@ -1,6 +1,5 @@
 #ifndef COLORMAP
 #define COLORMAP
-#endif
 
 #include <iostream>
 
@@ -111,3 +110,5 @@ constexpr ColorMap colormaps[] = {
             (src - 220) * 10 );
     })
 };
+
+#endif
