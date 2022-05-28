@@ -1,6 +1,5 @@
 #ifndef COLORMAP
 #define COLORMAP
-#endif
 
 
 #include <array>
@@ -20,3 +19,5 @@ void apply_colormap(
     const complex::iter_type * source,
     int size_x, int size_y
 );
+
+#endif

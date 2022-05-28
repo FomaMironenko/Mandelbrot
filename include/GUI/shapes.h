@@ -1,6 +1,5 @@
 #ifndef SHAPES
 #define SHAPES
-#endif
 
 #include <OpenGL/gl.h>
 #include <array>
@@ -14,3 +13,5 @@ void glDrawCircle(
 void glDrawText(
 
 );
+
+#endif

@@ -1,7 +1,6 @@
 // COMPLEX -- all complex logic implementation
 #ifndef COMPLEX
 #define COMPLEX
-#endif
 
 #include <OpenGL/gl.h>
 
@@ -29,3 +28,5 @@ iter_type belonging_rate(
 ) noexcept;
 
 }
+
+#endif
