@@ -4,6 +4,7 @@
 
 #include "Backend/complex.h"
 #include "Backend/image-processing.h"
+#include "Backend/screenshot.h"
 
 #include "GUI/shapes.h"
 #include "GUI/canvas.h"
@@ -81,6 +82,9 @@ void key_pressed(unsigned char key, int x, int y) {
         case EN_KEY_COLORMAP_LOWCASE:
             CURR_COLORMAP = (CURR_COLORMAP + 1) % numel(colormaps);
             break;
+        case EN_KEY_SCREENSHOT_UPPCASE:
+        case EN_KEY_SCREENSHOT_LOWCASE:
+            capture_screenshot(grid);
     }
     display();
 }

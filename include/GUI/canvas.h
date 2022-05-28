@@ -38,6 +38,9 @@ const unsigned char EN_KEY_SPACE = 32;
 const unsigned char EN_KEY_COLORMAP_UPPCASE = 67;
 const unsigned char EN_KEY_COLORMAP_LOWCASE = 99;
 
+const unsigned char EN_KEY_SCREENSHOT_UPPCASE = 84;
+const unsigned char EN_KEY_SCREENSHOT_LOWCASE = 116;
+
 
 constexpr int size_x = 720;
 constexpr int size_y = 480;
