@@ -34,7 +34,18 @@ void initCanvas() {
 void display() {
     apply_colormap(picture, data, size_x, size_y);
     glDrawPixels(size_x, size_y, GL_RGB, GL_UNSIGNED_BYTE, picture);
-    if (DO_DRAW_TARGET) glDrawCircle({.0, .0}, {.15, .15}, {1.0, 1.0, 1.0, .1});
+    if (DO_DRAW_TARGET) glDrawSector({.0, .0}, {.15, .15}, {1.0, 1.0, 1.0, .1});
+    glFlush();
+}
+
+void pending_screen() {
+    glColor4d(1., 1., 1., .4);
+    glBegin(GL_QUADS);
+        glVertex2d(-1, -1);
+        glVertex2d(1, -1);
+        glVertex2d(1, 1);
+        glVertex2d(-1, 1);
+    glEnd();
     glFlush();
 }
 
@@ -90,7 +101,7 @@ void key_pressed(unsigned char key, int x, int y) {
 }
 
 std::pair<int, int> getWindowSize() {
-    return {size_x, size_y};
+    return {size_x/2, size_y/2};
 }
 
 void reshape(int width, int height) {

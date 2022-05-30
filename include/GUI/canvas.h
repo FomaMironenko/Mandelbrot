@@ -52,6 +52,8 @@ void initCanvas();
 
 void display();
 
+void pending_screen();
+
 void key_pressed(unsigned char key, int x, int y);
 
 void reshape(int width, int height);

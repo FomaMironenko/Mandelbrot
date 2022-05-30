@@ -4,18 +4,26 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
-
 #include <vector>
+#include <chrono>
+
+#include <thread>
+#include <atomic>
+
+#define GL_SILENCE_DEPRECATION
+#include <GLUT/glut.h>
 
 #include "Backend/complex.h"
 #include "Backend/screenshot.h"
 #include "GUI/canvas.h"
 #include "GUI/colormap.h"
+#include "GUI/shapes.h"
 
 
-void capture_screenshot(
-    const Grid & grid
-) {
+
+std::atomic_bool SCREENSHOT_CAPTURED;
+
+void do_screenshot_work( const Grid & grid ) {
     Grid scr_grid{grid};
     scr_grid.spacing *= (coord_type) size_x / (coord_type) scr_size_x;
 
@@ -54,4 +62,36 @@ void capture_screenshot(
              << (int)scr_picture[i*3 + 2] << "\n";
     }
     file.close();
+    SCREENSHOT_CAPTURED = true;
+}
+
+void capture_screenshot( const Grid & grid ) {
+    SCREENSHOT_CAPTURED = false;
+    pending_screen();
+    std::thread backend_thread(do_screenshot_work, grid);
+    
+    double rot_angle = 0;
+    constexpr double quarter = 0.5 * M_PI;
+    constexpr double rot_step = 1.0 / 36 * M_PI;
+    std::array<double, 4> BLACK  = {0, 0, 0, 1};
+    std::array<double, 4> WHITE  = {1, 1, 1, 1};
+    std::array<double, 4> YELLOW = {1, 1, 0, 1};
+    while (!SCREENSHOT_CAPTURED) {
+        glDrawSector({0, 0}, {.11, .11}, WHITE);
+        glDrawSector( {0, 0}, {.1, .1}, BLACK,
+            rot_angle + 0*quarter, rot_angle + 1*quarter );
+        glDrawSector( {0, 0}, {.1, .1}, YELLOW,
+            rot_angle + 1*quarter, rot_angle + 2*quarter );
+        glDrawSector( {0, 0}, {.1, .1}, BLACK,
+            rot_angle + 2*quarter, rot_angle + 3*quarter );
+        glDrawSector( {0, 0}, {.1, .1}, YELLOW,
+            rot_angle + 3*quarter, rot_angle + 4*quarter );
+        glFlush();
+        rot_angle += rot_step;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+    // remove pending screen effect
+    backend_thread.join();
+    display();
 }
