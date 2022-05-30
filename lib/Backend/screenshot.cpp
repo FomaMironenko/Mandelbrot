@@ -56,10 +56,14 @@ void do_screenshot_work( const Grid & grid ) {
     file << scr_size_x << " " << scr_size_y << "\n";
     file << "pixels\n";
     file << 255 << "\n";
-    for (int i = 0; i < scr_size_x * scr_size_y; i++) {
-        file << (int)scr_picture[i*3 + 0] << " "
-             << (int)scr_picture[i*3 + 1] << " "
-             << (int)scr_picture[i*3 + 2] << "\n";
+    // openGl and .ppm picture y axis are opposite oriented
+    for (int i, row = scr_size_y - 1; row >= 0; row--) {
+        for (int col = 0; col < scr_size_x; col++) {
+            i = row * scr_size_x + col;
+            file << (int)scr_picture[i*3 + 0] << " "
+                 << (int)scr_picture[i*3 + 1] << " "
+                 << (int)scr_picture[i*3 + 2] << "\n";
+        }
     }
     file.close();
     SCREENSHOT_CAPTURED = true;
