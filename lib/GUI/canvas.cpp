@@ -52,6 +52,9 @@ void key_pressed(unsigned char key, int x, int y) {
     unsigned den = 4;
     
     switch (key) {
+        case EN_KEY_EXIT:
+            std::cout << "Session terminated by the user" << std::endl;
+            exit(0); // needn't break
         case EN_KEY_UP_LOWCASE:
         case EN_KEY_UP_UPPCASE:
             do_shift(0, step);

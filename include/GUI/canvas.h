@@ -9,7 +9,9 @@
 #include "Backend/complex.h"
 
 
-const unsigned char EN_KEY_UP_LOWCASE = 119;
+const unsigned char EN_KEY_EXIT = 35; // '#'
+
+const unsigned char EN_KEY_UP_LOWCASE = 119; // 'w'
 const unsigned char EN_KEY_UP_UPPCASE = 87;
 const unsigned char RU_KEY_UP_LOWCASE = 119;
 const unsigned char RU_KEY_UP_UPPCASE = 87;
