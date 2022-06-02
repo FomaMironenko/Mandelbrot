@@ -1,7 +1,7 @@
 #include <iostream>
 
 #define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
+#include "emit_opengl.h"
 
 #include "Backend/complex.h"
 #include "GUI/canvas.h"

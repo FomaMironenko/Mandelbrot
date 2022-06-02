@@ -4,7 +4,8 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-#include <OpenGL/gl.h>
+#include "emit_opengl.h"
+
 #include <array>
 
 void glDrawSector(

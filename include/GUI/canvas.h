@@ -4,8 +4,7 @@
 #include <iostream>
 #include <memory>
 
-#define GL_SILENCE_DEPRECATION
-#include <OpenGL/gl.h>
+#include "emit_opengl.h"
 
 #include "Backend/complex.h"
 
