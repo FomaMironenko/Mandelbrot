@@ -1,7 +1,7 @@
 #ifndef SHAPES
 #define SHAPES
 
-#include <OpenGL/gl.h>
+#include "emit_opengl.h"
 #include <array>
 
 void glDrawCircle(

@@ -1,6 +1,6 @@
 
 #define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
+#include "emit_opengl.h"
 
 #define _USE_MATH_DEFINES
 #include <cmath>

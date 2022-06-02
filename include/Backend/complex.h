@@ -2,7 +2,7 @@
 #ifndef COMPLEX
 #define COMPLEX
 
-#include <OpenGL/gl.h>
+#include "emit_opengl.h"
 
 
 namespace complex {
